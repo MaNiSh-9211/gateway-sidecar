@@ -1,0 +1,12 @@
+services:
+  gateway-sidecar:
+    build: .
+    environment:
+      CONTROL_PLANE_URL: http://control-plane:8081
+      GATEWAY_CONFIG_PATH: /etc/gateway/config.json
+      CONFIG_POLL_SECS: "5"
+    volumes:
+      - gateway-config:/etc/gateway
+
+volumes:
+  gateway-config:
